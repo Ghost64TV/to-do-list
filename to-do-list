@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ul id="todo-list">
+        <li><input type="checkbox" id="task1">Waking up</li>
+        <li><input type="checkbox" id="task2">Brushing teeth</li>
+        <li><input type="checkbox" id="task3">Take a shower</li>
+        <li><input type="checkbox" id="task4">Eat breakfast</li>
+        <li><input type="checkbox" id="task5">Do homework</li>
+    </ul>
+
+    <script>
+        // Function to toggle task completion
+        function toggleTaskCompletion(event) {
+            const task = event.target;
+            const taskText = task.nextElementSibling;
+            if (task.checked) {
+                taskText.classList.add('completed');
+            } else {
+                taskText.classList.remove('completed');
+            }
+        }
+
+        // Add event listeners to all checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', toggleTaskCompletion);
+        });
+    </script>
+</body>
+</html>
